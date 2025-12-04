@@ -95,7 +95,7 @@
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             list-style: none;
         }
 
@@ -104,12 +104,29 @@
             color: #333;
             font-weight: 600;
             transition: color 0.3s, transform 0.2s;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Тень для читаемости */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        .nav-links a:hover {
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #FF8CB4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
             color: #FF8CB4;
             transform: translateY(-2px);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
         }
 
         .hero {
@@ -139,6 +156,7 @@
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             animation: fadeInDown 1s;
+            color: #8b4d6a;
         }
 
         .hero p {
@@ -146,6 +164,7 @@
             margin-bottom: 30px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             animation: fadeInUp 1s;
+            color: #8b4d6a;
         }
 
         .hero-photo {
@@ -215,12 +234,62 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
+        /* Блок "Бесплатная консультация" */
+        .consultation-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 40px 20px;
+            background: #fff;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+
+        .consultation-header {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #FF8CB4;
+            font-weight: 600;
+        }
+
+        .consultation-card {
+            background: linear-gradient(135deg, #FF8CB4, #FF6B9D);
+            padding: 30px;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .consultation-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .consultation-card p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+
         /* Блок "Мои услуги" */
-        .services {
+        .services-header {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #FF8CB4;
+            font-weight: 600;
+        }
+
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 20px;
         }
 
         .service-card {
@@ -228,7 +297,6 @@
             padding: 35px;
             border-radius: 20px;
             color: white;
-            text-align: center;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             height: 100%;
@@ -281,6 +349,60 @@
         .service-card .icon {
             font-size: 32px;
             margin-bottom: 15px;
+        }
+
+        /* Блок "Отзывы" */
+        .review-slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .review-track {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+        .review-card {
+            min-width: 100%;
+            background: linear-gradient(135deg, #FFD6E0, #FF8CB4);
+            padding: 40px;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .review-card h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .review-card p {
+            font-size: 18px;
+            line-height: 1.6;
+            flex-grow: 1;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .review-buttons {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .review-btn {
+            background: #FF6B9D;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 0 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .review-btn:hover {
+            background: #FF8CB4;
         }
 
         /* Блок "Почему выбирают меня?" */
@@ -384,57 +506,23 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
-        .review-slider {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            margin-top: 30px;
-        }
-        .review-track {
-            display: flex;
-            transition: transform 0.6s ease;
-        }
-        .review-card {
-            min-width: 100%;
-            background: linear-gradient(135deg, #FFD6E0, #FF8CB4);
-            padding: 40px;
-            border-radius: 20px;
+        .price-card .signup-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FF8CB4, #FF6B9D);
             color: white;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .review-card h3 {
-            font-size: 26px;
-            margin-bottom: 15px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
-        .review-card p {
-            font-size: 18px;
-            line-height: 1.6;
-            flex-grow: 1;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
-        .review-buttons {
-            margin-top: 25px;
-            text-align: center;
-        }
-        .review-btn {
-            background: #FF6B9D;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            margin: 0 10px;
-            border-radius: 10px;
-            cursor: pointer;
+            text-decoration: none;
+            border-radius: 30px;
             font-size: 16px;
-            transition: background 0.3s;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 15px;
         }
-        .review-btn:hover {
-            background: #FF8CB4;
+
+        .price-card .signup-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
         }
 
         .contact-info {
@@ -526,6 +614,8 @@
             
             .nav-links {
                 gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .hero-photo {
@@ -538,11 +628,155 @@
             .review-card,
             .price-card {
                 height: auto;
+                padding: 30px 20px;
             }
 
             .why-grid,
             .price-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .section {
+                margin: 40px auto;
+                padding: 40px 15px;
+            }
+
+            .section h2 {
+                font-size: 36px;
+                margin-bottom: 30px;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+
+            .consultation-section {
+                margin: 40px auto;
+                padding: 30px 15px;
+            }
+
+            .consultation-header {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+
+            .consultation-card {
+                padding: 25px 20px;
+                max-width: 100%;
+            }
+
+            .consultation-card h3 {
+                font-size: 24px;
+            }
+
+            .services-header {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+
+            .services-grid {
+                gap: 20px;
+            }
+
+            .review-slider {
+                margin-top: 20px;
+            }
+
+            .review-card {
+                padding: 30px 20px;
+            }
+
+            .review-btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .price-card .signup-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .contact-info p {
+                font-size: 18px;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .nav-links {
+                gap: 10px;
+            }
+
+            .section {
+                margin: 30px auto;
+                padding: 30px 10px;
+            }
+
+            .section h2 {
+                font-size: 32px;
+                margin-bottom: 25px;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+
+            .consultation-section {
+                margin: 30px auto;
+                padding: 25px 10px;
+            }
+
+            .consultation-header {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            .consultation-card {
+                padding: 20px 15px;
+            }
+
+            .consultation-card h3 {
+                font-size: 22px;
+            }
+
+            .services-header {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            .price-card {
+                padding: 25px 15px;
+            }
+
+            .price-card h3 {
+                font-size: 24px;
+            }
+
+            .price-card p {
+                font-size: 16px;
+            }
+
+            .price-card .price {
+                font-size: 24px;
+            }
+
+            .price-card .signup-button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .contact-info p {
+                font-size: 16px;
             }
         }
     </style>
@@ -566,9 +800,11 @@
         <nav>
             <div class="logo">Английский с Александрой ✨</div>
             <ul class="nav-links">
-                <li><a href="#services">Услуги</a></li>
-                <li><a href="#benefits">Преимущества</a></li>
-                <li><a href="#contact">Контакты</a></li>
+                <li><a href="#services" data-section="services">Услуги</a></li>
+                <li><a href="#reviews" data-section="reviews">Отзывы</a></li>
+                <li><a href="#benefits" data-section="benefits">Преимущества</a></li>
+                <li><a href="#pricing" data-section="pricing">Цены</a></li>
+                <li><a href="#contact" data-section="contact">Контакты</a></li>
             </ul>
         </nav>
     </header>
@@ -586,17 +822,21 @@
         </div>
     </section>
 
-    <section class="section" id="services">
-        <h2>🎁 Бесплатная первая консультация!</h2>
-        <div style="background: linear-gradient(135deg, #FF8CB4, #FF6B9D); padding: 40px; border-radius: 20px; color: white; text-align: center; margin-bottom: 50px;">
-            <h3 style="font-size: 28px; margin-bottom: 20px;">20–30 минут онлайн — совершенно бесплатно</h3>
-            <p style="font-size: 20px; line-height: 1.8; margin-bottom: 0;">
-                На консультации мы познакомимся, определим уровень ребёнка,<br>
-                поставим цели и наметим план обучения
-            </p>
+    <section class="consultation-section">
+        <div class="consultation-header">
+            🎁 Бесплатная первая консультация!
         </div>
-        <h2>Мои услуги</h2>
-        <div class="services">
+        <div class="consultation-card">
+            <h3>20–30 минут онлайн — совершенно бесплатно</h3>
+            <p>На консультации мы познакомимся, определим уровень ребёнка,<br>поставим цели и наметим план обучения</p>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <div class="services-header">
+            Мои услуги
+        </div>
+        <div class="services-grid">
             <div class="service-card">
                 <div class="icon">📘</div>
                 <h3>Начальная школа (1–4 класс)</h3>
@@ -675,26 +915,31 @@
                 <p>Создаю доброжелательную атмосферу без страха ошибок</p>
             </div>
         </div>
+    </section>
 
-        <h2 style="margin-top: 60px;">Цены и форматы занятий</h2>
+    <section class="section" id="pricing">
+        <h2>Цены и форматы занятий</h2>
         <div class="price-grid">
             <div class="price-card">
                 <h3>💎 Бесплатная консультация</h3>
                 <p>20–30 минут</p>
                 <div class="price">0 ₽</div>
                 <p>Чтобы познакомиться и определить цель</p>
+                <a href="#contact" class="signup-button">Записаться</a>
             </div>
             <div class="price-card">
                 <h3>📖 Начальная школа (1–4 кл.)</h3>
                 <p>Урок 45 минут</p>
-                <div class="price">1200 ₽</div>
+                <div class="price">1000 ₽</div>
                 <p>Оплата абонементами по 4 или 8 занятий</p>
+                <a href="#contact" class="signup-button">Записаться</a>
             </div>
             <div class="price-card">
                 <h3>📚 Средняя школа (5–8 кл.)</h3>
                 <p>Урок 60 минут</p>
                 <div class="price">1200 ₽</div>
                 <p>Оплата абонементами по 4 или 8 занятий</p>
+                <a href="#contact" class="signup-button">Записаться</a>
             </div>
         </div>
     </section>
@@ -704,6 +949,7 @@
         <div class="contact-info">
             <p>📱 <strong>Telegram:</strong> <a href="https://t.me/Alexandra_tutor_eng" target="_blank">@Alexandra_tutor_eng</a></p>
             <p>📱 <strong>WhatsApp:</strong> <a href="https://wa.me/79315029909" target="_blank">+7 931 502-99-09</a></p>
+            <p>📘 <strong>ВКонтакте:</strong> <a href="https://vk.com/aleksandis" target="_blank">aleksandis</a></p>
             <p>📧 Email: <a href="mailto:aleksandragradova70@gmail.com">aleksandragradova70@gmail.com</a></p>
             <p>🕒 Занятия онлайн в удобное для вас время</p>
         </div>
@@ -712,5 +958,46 @@
     <footer>
         <p>&copy; 2025 Английский с Александрой ✨ | Репетитор для школьников 1–8 классов</p>
     </footer>
+
+    <script>
+        // Добавляем выделение активного пункта навигации при прокрутке
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        function setActiveLink() {
+            let currentSectionId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100; // с небольшим отступом
+                const sectionHeight = section.clientHeight;
+                const sectionBottom = sectionTop + sectionHeight;
+
+                if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                    currentSectionId = section.id;
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveLink);
+
+        // Также обновляем при клике
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(setActiveLink, 500); // ждём завершения плавной прокрутки
+            });
+        });
+
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            setActiveLink();
+        });
+    </script>
 </body>
 </html>
