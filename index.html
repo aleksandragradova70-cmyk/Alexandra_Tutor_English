@@ -276,7 +276,7 @@
             margin-top: 15px;
         }
 
-        /* Блок "Мои услуги" */
+        /* Блок "Мои услуги" — ВСЁ ПО ЦЕНТРУ */
         .services-header {
             font-size: 36px;
             text-align: center;
@@ -290,6 +290,7 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 20px;
+            justify-items: center; /* 👈 Ключевая строка: центрирует карточки */
         }
 
         .service-card {
@@ -303,9 +304,12 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             position: relative;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            max-width: 320px;
         }
 
         .service-card:before {
@@ -337,6 +341,7 @@
             align-items: center;
             gap: 10px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            justify-content: center;
         }
 
         .service-card p {
@@ -344,6 +349,7 @@
             line-height: 1.6;
             flex-grow: 1;
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            text-align: center;
         }
 
         .service-card .icon {
@@ -411,6 +417,7 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            justify-items: center;
         }
 
         .why-card {
@@ -427,6 +434,7 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            max-width: 320px;
         }
 
         .why-card:hover {
@@ -442,6 +450,7 @@
             align-items: center;
             gap: 10px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            justify-content: center;
         }
 
         .why-card p {
@@ -449,6 +458,7 @@
             line-height: 1.6;
             flex-grow: 1;
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            text-align: center;
         }
 
         /* Блок "Цены и форматы занятий" */
@@ -457,6 +467,7 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            justify-items: center;
         }
 
         .price-card {
@@ -473,6 +484,7 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            max-width: 320px;
         }
 
         .price-card:hover {
@@ -489,6 +501,7 @@
             align-items: center;
             gap: 10px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            justify-content: center;
         }
 
         .price-card p {
@@ -496,6 +509,7 @@
             line-height: 1.6;
             margin-bottom: 15px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            text-align: center;
         }
 
         .price-card .price {
@@ -548,6 +562,80 @@
         .contact-info a:hover {
             color: #FF6B9D;
             transform: translateY(-2px);
+        }
+
+        /* Слот-машина (боевая версия) */
+        .slot-machine {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin: 30px auto;
+            max-width: 500px;
+        }
+
+        .slot-title {
+            font-size: 24px;
+            color: #FF6B9D;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .slot-subtitle {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .slot-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .slot-reel {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            color: #FF6B9D;
+            font-weight: bold;
+        }
+
+        .prize-result {
+            font-size: 22px;
+            font-weight: bold;
+            color: #FF6B9D;
+            margin: 20px 0;
+            min-height: 30px;
+            display: none;
+        }
+
+        .claim-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FF8CB4, #FF6B9D);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 20px auto;
+            display: none;
+        }
+
+        .claim-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
         }
 
         footer {
@@ -632,8 +720,10 @@
             }
 
             .why-grid,
-            .price-grid {
+            .price-grid,
+            .services-grid {
                 grid-template-columns: 1fr;
+                justify-items: center;
             }
 
             .section {
@@ -700,6 +790,38 @@
             .contact-info p {
                 font-size: 18px;
                 margin: 10px 0;
+            }
+
+            .slot-machine {
+                padding: 20px 15px;
+                max-width: 100%;
+            }
+
+            .slot-container {
+                gap: 10px;
+            }
+
+            .slot-reel {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+            }
+
+            .slot-title {
+                font-size: 20px;
+            }
+
+            .slot-subtitle {
+                font-size: 14px;
+            }
+
+            .prize-result {
+                font-size: 18px;
+            }
+
+            .claim-button {
+                padding: 10px 20px;
+                font-size: 14px;
             }
         }
 
@@ -777,6 +899,33 @@
 
             .contact-info p {
                 font-size: 16px;
+            }
+
+            .slot-machine {
+                padding: 20px 10px;
+            }
+
+            .slot-reel {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .slot-title {
+                font-size: 18px;
+            }
+
+            .slot-subtitle {
+                font-size: 12px;
+            }
+
+            .prize-result {
+                font-size: 16px;
+            }
+
+            .claim-button {
+                padding: 8px 15px;
+                font-size: 12px;
             }
         }
     </style>
@@ -942,6 +1091,71 @@
                 <a href="#contact" class="signup-button">Записаться</a>
             </div>
         </div>
+
+        <!-- Геймификация: Слот-машина (боевая версия) -->
+        <div class="slot-machine" id="slotMachine">
+            <div class="slot-title">🎁 Попробуй свою удачу!</div>
+            <div class="slot-subtitle">Крути барабан — и получи подарок на первое занятие!</div>
+            
+            <div class="slot-container">
+                <div class="slot-reel" id="reel1">❓</div>
+                <div class="slot-reel" id="reel2">❓</div>
+                <div class="slot-reel" id="reel3">❓</div>
+            </div>
+            
+            <button id="spinButton" class="cta-button" style="margin: 20px auto; display: block;">Крутить!</button>
+            
+            <div class="prize-result" id="prizeResult"></div>
+            
+            <a href="#contact" id="claimButton" class="claim-button">Забрать приз</a>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const spinButton = document.getElementById('spinButton');
+                const claimButton = document.getElementById('claimButton');
+                const prizeResult = document.getElementById('prizeResult');
+                const reels = [
+                    document.getElementById('reel1'),
+                    document.getElementById('reel2'),
+                    document.getElementById('reel3')
+                ];
+                const slotMachine = document.getElementById('slotMachine');
+
+                const savedPrize = localStorage.getItem('slotPrize');
+                if (savedPrize) {
+                    prizeResult.innerHTML = savedPrize;
+                    prizeResult.style.display = 'block';
+                    claimButton.style.display = 'inline-block';
+                    spinButton.remove();
+                } else {
+                    const prizes = [
+                        { symbol: '🎫', text: 'Скидка на первый месяц 10%' },
+                        { symbol: '🎓', text: 'Бесплатный урок' },
+                        { symbol: '🎫', text: 'Скидка на первый месяц 5%' },
+                        { symbol: '💎', text: 'Скидка на первый месяц 15%' }
+                    ];
+
+                    spinButton.addEventListener('click', () => {
+                        const prize = prizes[Math.floor(Math.random() * prizes.length)];
+                        
+                        reels.forEach(reel => {
+                            reel.textContent = prize.symbol;
+                            reel.style.fontSize = '40px';
+                            reel.style.color = '#FF6B9D';
+                            reel.style.fontWeight = 'bold';
+                        });
+
+                        const prizeHTML = `<span style="color: #FF8CB4;">${prize.symbol}</span> ${prize.text} <span style="color: #FF8CB4;">${prize.symbol}</span>`;
+                        prizeResult.innerHTML = prizeHTML;
+                        prizeResult.style.display = 'block';
+                        localStorage.setItem('slotPrize', prizeHTML);
+                        claimButton.style.display = 'inline-block';
+                        spinButton.remove();
+                    });
+                }
+            });
+        </script>
     </section>
 
     <section class="section" id="contact">
@@ -960,23 +1174,19 @@
     </footer>
 
     <script>
-        // Добавляем выделение активного пункта навигации при прокрутке
         const sections = document.querySelectorAll('.section');
         const navLinks = document.querySelectorAll('.nav-links a');
 
         function setActiveLink() {
             let currentSectionId = '';
-
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100; // с небольшим отступом
+                const sectionTop = section.offsetTop - 100;
                 const sectionHeight = section.clientHeight;
                 const sectionBottom = sectionTop + sectionHeight;
-
                 if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
                     currentSectionId = section.id;
                 }
             });
-
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${currentSectionId}`) {
@@ -986,18 +1196,10 @@
         }
 
         window.addEventListener('scroll', setActiveLink);
-
-        // Также обновляем при клике
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                setTimeout(setActiveLink, 500); // ждём завершения плавной прокрутки
-            });
+            link.addEventListener('click', () => setTimeout(setActiveLink, 500));
         });
-
-        // Инициализация при загрузке
-        document.addEventListener('DOMContentLoaded', () => {
-            setActiveLink();
-        });
+        document.addEventListener('DOMContentLoaded', () => setActiveLink());
     </script>
 </body>
 </html>
